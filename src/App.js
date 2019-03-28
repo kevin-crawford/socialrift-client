@@ -3,35 +3,32 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import themeFile from "./util/theme";
+import jwtDecode from "jwt-decode";
 
 //Components
 import NavBar from "./components/Navbar";
+import AuthRoute from "./util/AuthRoute";
 
 // pages
 import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      light: "#b085f5",
-      main: "#7e57c2",
-      dark: "#4d2c91",
-      contrastText: "#ffffff"
-    },
-    secondary: {
-      light: "#f8fdff",
-      main: "#c5cae9",
-      dark: "#9499b7",
-      contrastText: "#000000"
-    }
-  },
-  typography: {
-    useNextVariants: true
-  }
-});
+const theme = createMuiTheme(themeFile);
 
+const token = localStorage.FBIdToken;
+let authenticated;
+
+if (token) {
+  const decodedToken = jwtDecode(token);
+  if (decodedToken.exp * 1000 < Date.now()) {
+    window.location.href = "/login";
+    authenticated = false;
+  } else {
+    authenticated = true;
+  }
+}
 class App extends Component {
   render() {
     return (
@@ -42,8 +39,18 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={home} />
-                <Route exact path="/login" component={login} />
-                <Route exact path="/signup" component={signup} />
+                <AuthRoute
+                  exact
+                  path="/login"
+                  component={login}
+                  authenticated={authenticated}
+                />
+                <AuthRoute
+                  exact
+                  path="/signup"
+                  component={signup}
+                  authenticated={authenticated}
+                />
               </Switch>
             </div>
           </Router>
