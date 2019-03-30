@@ -29,12 +29,6 @@ export class login extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.UI.errors) {
-      this.setState({ errors: nextProps.UI.errors });
-    }
-  }
-
   handleSubmit = e => {
     e.preventDefault();
     const userData = {
@@ -43,6 +37,12 @@ export class login extends Component {
     };
     this.props.loginUser(userData, this.props.history);
   };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.UI.errors) {
+      this.setState({ errors: nextProps.UI.errors });
+    }
+  }
 
   handleChange = e => {
     this.setState({
