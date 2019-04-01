@@ -1,28 +1,21 @@
 import React, { Component } from "react";
-import axios from "axios";
 import Grid from "@material-ui/core/Grid";
+import PropTypes from "prop-types";
+
+import { connect } from "react-redux";
+import { getRifts } from "../redux/actions/dataActions";
 
 import Rift from "../components/Rift";
 import Profile from "../components/Profile";
 export class home extends Component {
-  state = {
-    rifts: null
-  };
   componentDidMount() {
-    axios
-      .get("/rifts")
-      .then(res => {
-        console.log(res.data);
-        this.setState({
-          rifts: res.data
-        });
-      })
-      .catch(err => console.log(err));
+    this.props.getRifts();
   }
 
   render() {
-    let recentRiftsMarkUp = this.state.rifts ? (
-      this.state.rifts.map(rift => <Rift key={rift.riftId} rift={rift} />)
+    const { rifts, loading } = this.props.data;
+    let recentRiftsMarkUp = !loading ? (
+      rifts.map(rift => <Rift key={rift.riftId} rift={rift} />)
     ) : (
       <p>Loading...</p>
     );
@@ -39,4 +32,16 @@ export class home extends Component {
   }
 }
 
-export default home;
+home.propTypes = {
+  getRifts: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  data: state.data
+});
+
+export default connect(
+  mapStateToProps,
+  { getRifts }
+)(home);

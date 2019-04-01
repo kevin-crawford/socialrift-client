@@ -2,6 +2,8 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
+import EditDetails from "./EditDetails";
+import MyButton from "../util/MyButton";
 //REDUX
 import { connect } from "react-redux";
 import { logoutUser, uploadImage } from "../redux/actions/userActions";
@@ -12,14 +14,13 @@ import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import MuiLink from "@material-ui/core/Link";
-import IconButton from "@material-ui/core/IconButton";
-import Tooltip from "@material-ui/core/Tooltip";
 
 // Icons
 import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 import EditIcon from "@material-ui/icons/Edit";
+import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
 
 const styles = theme => ({
   paper: {
@@ -81,6 +82,10 @@ class Profile extends Component {
     const fileInput = document.getElementById("imageInput");
     fileInput.click();
   };
+
+  handleLogout = () => {
+    this.props.logoutUser();
+  };
   render() {
     const {
       classes,
@@ -102,11 +107,13 @@ class Profile extends Component {
                 hidden="hidden"
                 onChange={this.handleImageChange}
               />
-              <Tooltip title="Edit Profile Picture" placement="top">
-                <IconButton onClick={this.handleEditPicture} className="button">
-                  <EditIcon color="primary" />
-                </IconButton>
-              </Tooltip>
+              <MyButton
+                tip="Edit Profile Picture"
+                onClick={this.handleEditPicture}
+                btnClassName="button"
+              >
+                <EditIcon color="primary" />
+              </MyButton>
             </div>
             <hr />
             <div className="profile-details">
@@ -140,6 +147,10 @@ class Profile extends Component {
               <CalendarToday color="primary" />{" "}
               <span>Joined {dayjs(createdAt).format("MMM YYYY")}</span>
             </div>
+            <MyButton tip="Logout" onClick={this.handleLogout}>
+              <KeyboardReturn color="primary" />
+            </MyButton>
+            <EditDetails />
           </div>
         </Paper>
       ) : (
