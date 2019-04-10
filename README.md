@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="460" height="300" src="/src/images/icon.png">
+  <img width="100" height="100" src="/src/images/icon.png">
 </p>
 
 # SocialRift
@@ -17,28 +17,39 @@ Users also can add basic details to their profile including: Profile Image, Loca
 
 ### Landing Page
 
-![Screenshot](/src/images/socialrift-landing.png)
+<p align="center">
+  <img width="500" height="400" src="/src/images/socialrift-landing.png">
+</p>
 
 ### Sign Up / Register
 
-![Screenshot](/src/images/socialrift-login.png)
+<p align="center">
+  <img width="500" height="400" src="/src/images/socialrift-login.png">
+</p>
 
-![Screenshot](/src/images/socialrift-signup.png)
+<p align="center">
+  <img width="500" height="400" src="/src/images/socialrift-signup.png">
+</p>
 
 ### Post A Rift
 
-![Screenshot](/src/images/socialrift-postrift.png)
+<p align="center">
+  <img width="500" height="400" src="/src/images/socialrift-postrift.png">
+</p>
 
 ### Expand A Rift
 
 <p>This is where you can see rift comments from users</p>
-![Screenshot](/src/images/socialrift-riftexpand.png)
+<p align="center">
+  <img width="500" height="400" src="/src/images/socialrift-riftexpand.png">
+</p>
 
 ### Edit User Details
 
 <p>User Can add maintenance items at the single vehicle view page</p>
-
-![Screenshot](/src/images/socialrift-editdetails.png)
+<p align="center">
+  <img width="500" height="400" src="/src/images/socialrift-editdetails.png">
+</p>
 
 ## Functionality
 
