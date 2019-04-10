@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import PropTypes from "prop-types";
+import RiftSkeleton from "../util/RiftSkeleton";
 
 import { connect } from "react-redux";
 import { getRifts } from "../redux/actions/dataActions";
 
-import Rift from "../components/Rift";
-import Profile from "../components/Profile";
+import Rift from "../components/rift/Rift";
+import Profile from "../components/profile/Profile";
 export class home extends Component {
   componentDidMount() {
     this.props.getRifts();
@@ -17,7 +18,7 @@ export class home extends Component {
     let recentRiftsMarkUp = !loading ? (
       rifts.map(rift => <Rift key={rift.riftId} rift={rift} />)
     ) : (
-      <p>Loading...</p>
+      <RiftSkeleton />
     );
     return (
       <Grid container spacing={16}>

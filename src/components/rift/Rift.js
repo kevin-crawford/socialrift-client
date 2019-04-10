@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import PropTypes from "prop-types";
-import MyButton from "../util/MyButton";
-import DeleteRift from "../components/DeleteRift";
+import MyButton from "../../util/MyButton";
+import DeleteRift from "../rift/DeleteRift";
+import RiftDialog from "./RiftDialog";
+import LikeButton from "./LikeButton";
 //REDUX
 import { connect } from "react-redux";
-import { likeRift, unlikeRift } from "../redux/actions/dataActions";
 
 //ICONS
 import ChatIcon from "@material-ui/icons/Chat";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+
 // MUI CARD STUFF
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -34,20 +34,6 @@ const styles = {
   }
 };
 class Rift extends Component {
-  likedRift = () => {
-    if (
-      this.props.user.likes &&
-      this.props.user.likes.find(like => like.riftId === this.props.rift.riftId)
-    )
-      return true;
-    else return false;
-  };
-  likeRift = () => {
-    this.props.likeRift(this.props.rift.riftId);
-  };
-  unlikeRift = () => {
-    this.props.unlikeRift(this.props.rift.riftId);
-  };
   render() {
     dayjs.extend(relativeTime);
     // destructuring
@@ -68,21 +54,7 @@ class Rift extends Component {
         credentials: { handle }
       }
     } = this.props;
-    const likeButton = !authenticated ? (
-      <MyButton tip="Like">
-        <Link to="/login">
-          <FavoriteBorder color="primary" />
-        </Link>
-      </MyButton>
-    ) : this.likedRift() ? (
-      <MyButton tip="Undo Like" onClick={this.unlikeRift}>
-        <FavoriteIcon color="primary" />
-      </MyButton>
-    ) : (
-      <MyButton tip="Like" onClick={this.likeRift}>
-        <FavoriteBorder color="primary" />
-      </MyButton>
-    );
+
     const deleteButton =
       authenticated && userHandle === handle ? (
         <DeleteRift riftId={riftId} />
@@ -108,12 +80,17 @@ class Rift extends Component {
             {dayjs(createdAt).fromNow()}
           </Typography>
           <Typography variant="body1">{body}</Typography>
-          {likeButton}
+          <LikeButton riftId={riftId} />
           <span>{likeCount} Likes</span>
           <MyButton tip="comments">
             <ChatIcon color="primary" />
           </MyButton>
           <span>{commentCount} Comments</span>
+          <RiftDialog
+            riftId={riftId}
+            userHandle={userHandle}
+            openDialog={this.props.openDialog}
+          />
         </CardContent>
       </Card>
     );
@@ -121,23 +98,14 @@ class Rift extends Component {
 }
 
 Rift.propTypes = {
-  likeRift: PropTypes.func.isRequired,
-  unlikeRift: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   rift: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  openDialog: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
   user: state.user
 });
 
-const mapActionsToProps = {
-  likeRift,
-  unlikeRift
-};
-
-export default connect(
-  mapStateToProps,
-  mapActionsToProps
-)(withStyles(styles)(Rift));
+export default connect(mapStateToProps)(withStyles(styles)(Rift));

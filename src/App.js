@@ -13,15 +13,19 @@ import { SET_AUTHENTICATED } from "./redux/types";
 import { logoutUser, getUserData } from "./redux/actions/userActions";
 
 //Components
-import NavBar from "./components/Navbar";
+import NavBar from "./components/layout/Navbar";
 import AuthRoute from "./util/AuthRoute";
 
 // pages
 import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
+import user from "./pages/user";
 
 const theme = createMuiTheme(themeFile);
+
+axios.defaults.baseURL =
+  "https://us-central1-socialrift-2f5d3.cloudfunctions.net/api";
 
 const token = localStorage.FBIdToken;
 
@@ -48,6 +52,12 @@ class App extends Component {
                 <Route exact path="/" component={home} />
                 <AuthRoute exact path="/login" component={login} />
                 <AuthRoute exact path="/signup" component={signup} />
+                <Route exact path="/users/:handle" component={user} />
+                <Route
+                  exact
+                  path="/users/:handle/rift/:riftId"
+                  component={user}
+                />
               </Switch>
             </div>
           </Router>
