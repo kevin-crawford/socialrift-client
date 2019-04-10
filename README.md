@@ -1,4 +1,4 @@
-![Screenshot](/src/images/icon.png)
+<p align="center">![Screenshot](/src/images/icon.png)</p>
 
 # SocialRift
 
@@ -19,25 +19,24 @@ Users also can add basic details to their profile including: Profile Image, Loca
 
 ### Sign Up / Register
 
-![Screenshot](/images/automate_login.png)
+![Screenshot](/src/images/socialrift-login.png)
 
-![Screenshot](/images/automate_signup.png)
+![Screenshot](/src/images/socialrift-signup.png)
 
-### Vehicle Garage
+### Post A Rift
 
-<p>User Should add vehicles they own into the garage.</p>
+![Screenshot](/src/images/socialrift-postrift.png)
 
-![Screenshot](/images/automate_garage.png)
+### Expand A Rift
 
-### Add Vehicle
+<p>This is where you can see rift comments from users</p>
+![Screenshot](/src/images/socialrift-riftexpand.png)
 
-![Screenshot](/images/automate_addvehicle.png)
-
-### Single Vehicle View
+### Edit User Details
 
 <p>User Can add maintenance items at the single vehicle view page</p>
 
-![Screenshot](/images/automate_singleview.png)
+![Screenshot](/src/images/socialrift-editdetails.png)
 
 ## Functionality
 
@@ -51,24 +50,22 @@ Users also can add basic details to their profile including: Profile Image, Loca
 <b>Front-End</b>
 
 - HTML5
-- CSS3
+- Material UI (Icons and Modules)
 - Javascript ES6
-- JQuery
 - React
 - Redux
-
-<b>Back-End</b>
-
-- Passport.js
-- BCrpyt.js
-- Mongoose
+- Axios, AJAX calls
+-
 
 ### Developer Roadmap
 
 ## This is v1.0 of the app, future enhancements include
 
 <ul>
-	<li>Enabling email notifications for maintenance items for vehicles on 30 day intervals </li>
-	<li>Integration with vehicle OBD readers to get live up to date vehicle information</li>
-	<li>Vehicle Maintenance Code Integration</li>
+	<li>Solve mobile rendering and media queries (React Native ?)</li>
+	<li>Add ability to edit rifts, delete comments</li>
+	<li>Add emoji keyboard</li>
+	<li>Emailing Functions: notifications, password reset, etc</li>
+	<li>add ability to add url links to rifts</li>
+	<li>fix instant update of comment count</li>
 </ul>
