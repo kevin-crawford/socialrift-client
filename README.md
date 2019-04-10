@@ -1,68 +1,74 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Screenshot](/src/images/icon.png)
 
-## Available Scripts
+# SocialRift
 
-In the project directory, you can run:
+### Live App: https://socialrift-2f5d3.firebaseapp.com/
 
-### `npm start`
+### Link To Firebase Back-end Functions: https://github.com/kevin-crawford/socialrift
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Summary:
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+<p>Social Rift is a social media platform that functions similar to Twitter. 
+Users are able to create what I call "Rifts", that are able to be commented on or liked by yourself and other users.
+Users also can add basic details to their profile including: Profile Image, Location, Website, and a small biography.
+</p>
 
-### `npm test`
+### Landing Page
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Screenshot](/src/images/socialrift-landing.png)
 
-### `npm run build`
+### Sign Up / Register
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Screenshot](/images/automate_login.png)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+![Screenshot](/images/automate_signup.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Vehicle Garage
 
-### `npm run eject`
+<p>User Should add vehicles they own into the garage.</p>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Screenshot](/images/automate_garage.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Add Vehicle
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![Screenshot](/images/automate_addvehicle.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Single Vehicle View
 
-## Learn More
+<p>User Can add maintenance items at the single vehicle view page</p>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Screenshot](/images/automate_singleview.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Functionality
 
-### Code Splitting
+<ul>
+	<li>User has ability to create an account that stores their owned vehicles</li>
+	<li>User is able to add/update/delete vehicles in their Garage which updates the database</li>
+</ul>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Technologies Used:
 
-### Analyzing the Bundle Size
+<b>Front-End</b>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- HTML5
+- CSS3
+- Javascript ES6
+- JQuery
+- React
+- Redux
 
-### Making a Progressive Web App
+<b>Back-End</b>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- Passport.js
+- BCrpyt.js
+- Mongoose
 
-### Advanced Configuration
+### Developer Roadmap
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## This is v1.0 of the app, future enhancements include
 
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<ul>
+	<li>Enabling email notifications for maintenance items for vehicles on 30 day intervals </li>
+	<li>Integration with vehicle OBD readers to get live up to date vehicle information</li>
+	<li>Vehicle Maintenance Code Integration</li>
+</ul>
